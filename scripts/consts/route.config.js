@@ -22,6 +22,11 @@ app.config(['$routeProvider', '$locationProvider',
             controller: 'WelcomeCtrl',
             controllerAs: 'welcome'
           })
+          .when('/tasks-handling', {
+            templateUrl: 'views/_tasks.html',
+            controller: 'TasksCtrl',
+            controllerAs: 'task'
+          })
           .otherwise({
             templateUrl: 'views/_welcome.html',
             controller: 'WelcomeCtrl',
@@ -37,15 +42,19 @@ app.config(['$routeProvider', '$locationProvider',
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
       if (!$rootScope.user.logged) {
         // no logged user, we should be going to #login
-        if (next.$$route.templateUrl != "views/_login.html" ) {
+        if (!next.$$route || next.$$route.templateUrl != "views/_login.html" ) {
           $location.path( "/login" );
         } 
       }
       else
       {
-        if (next.$$route.templateUrl == "views/_login.html" ) {
+        if (next.$$route && next.$$route.templateUrl == "views/_login.html" ) {
           $location.path( "/welcome" );
-        } 
-      }      
+        }
+        else
+          $rootScope.page = $location.path().substring(1); 
+      }
+
+
     });
  })

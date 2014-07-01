@@ -1,4 +1,4 @@
-app.controller("UserSchedulingCtrl", ['$scope', '$routeParams', 'webServices', function($scope, $routeParams, webServices){
+app.controller("UserSchedulingCtrl", ['$scope', '$routeParams', 'webServices', '$location', function($scope, $routeParams, webServices, $location){
 	$scope.min = 0;
 	$scope.max = 0;
 	$scope.valueLoaded = false;
@@ -25,7 +25,7 @@ app.controller("UserSchedulingCtrl", ['$scope', '$routeParams', 'webServices', f
 	try{
 		webServices.getScheduledTasks($scope.user.characterId, function(data){
 			if (data){
-				$scope.value = data;
+				//$scope.value = data;
 			}
 			$scope.valueLoaded = true;
 		});
