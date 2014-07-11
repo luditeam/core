@@ -1,115 +1,37 @@
+    [
 
-
-
-
-
-		[
-			{
-				"name": "Employés",
-				"items": [
-					{
-						"id": 1,
-						"name": "Pierre",
-						"available_hours": 5,
-						"assigned_hours": 4,
-						"image": "http://localhost/luditeam/images/man-default-avatar.png",
-						"competences": [
-							{
-								"name": "achats",
-								"value": 10
-							},
-							{
-								"name": "ventes",
-								"value": 80
-							},
-							{
-								"name": "RH",
-								"value": 40
-							},
-						]
-					},
-					{
-						"id": 2,
-						"name": "Audrey",
-						"available_hours": 5,
-						"assigned_hours": 5,
-						"image": "http://localhost/luditeam/images/woman-default-avatar.png",
-						"competences": [
-							{
-								"name": "achats",
-								"value": 10
-							},
-							{
-								"name": "ventes",
-								"value": 80
-							},
-						]
-					},
-					{
-						"id": 3,
-						"name": "Jaques",
-						"available_hours": 5,
-						"assigned_hours": 0,
-						"image": "http://localhost/luditeam/images/man-default-avatar.png",
-						"competences": [
-							{
-								"name": "achats",
-								"value": 10
-							},
-							{
-								"name": "RH",
-								"value": 40
-							},
-						]
-					}
-				]
-			},
-			{
-
-				"name": "Prestataires",
-				"items": [
-					{
-						"id": 4,
-						"name": "Pauline",
-
-						"cost": 50,
-						"image": "http://localhost/luditeam/images/man-default-avatar.png",
-						"competences": [
-							{
-								"name": "achats",
-								"value": 10
-							}
-						]
-					},
-					{
-						"id": 5,
-						"name": "Jean",
-						"cost": 150,
-						"image": "http://localhost/luditeam/images/man-default-avatar.png",
-						"competences": [
-							
-							{
-								"name": "ventes",
-								"value": 80
-							},
-							{
-								"name": "RH",
-								"value": 40
-							},
-						]
-					},
-					{
-						"id": 6,
-						"name": "Léa",
-						"cost": 120,
-						"image": "http://localhost/luditeam/images/woman-default-avatar.png",
-						"competences": [
-							{
-								"name": "achats",
-								"value": 10
-							}
-						]
-					}
-				]
-			}
-		];
+            {
+                "name": "Vendre hamburger",
+                "ua_needed": 10,
+                "ua_assigned": 10,
+                "skill": "Ventes",
+                "volontary": false,
+                "variable": false,
+                "assigned": [
+                    {
+                        "characterId": 1,
+                        "name": "Pierre",
+                        "available_hours": 5,
+                        "assigned_hours": 4,
+                        "job": "COOK",
+                        "moral": 75,
+                        "image": "http://localhost/luditeam/images/man-default-avatar.png",
+                        "default_skill_score": 15,
+                        "skills": [
+                            {
+                                "name": "achats",
+                                "value": 10
+                            },
+                            {
+                                "name": "ventes",
+                                "value": 80
+                            },
+                            {
+                                "name": "RH",
+                                "value": 40
+                            },
+                        ]
+                    }
+                ]
+            }
+        ]

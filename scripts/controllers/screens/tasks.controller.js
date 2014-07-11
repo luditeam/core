@@ -11,7 +11,7 @@ app.controller("TasksCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 						name: "Pierre",
 						available_hours: 2,
 						image: "http://localhost/luditeam/images/man-default-avatar.png",
-						competences: [
+						skills: [
 							{
 								name: "achats",
 								value: 10
@@ -31,7 +31,7 @@ app.controller("TasksCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 						name: "Audrey",
 						available_hours: 6,
 						image: "http://localhost/luditeam/images/woman-default-avatar.png",
-						competences: [
+						skills: [
 							{
 								name: "achats",
 								value: 10
@@ -47,7 +47,7 @@ app.controller("TasksCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 						name: "Jaques",
 						available_hours: 1,
 						image: "http://localhost/luditeam/images/man-default-avatar.png",
-						competences: [
+						skills: [
 							{
 								name: "achats",
 								value: 10
@@ -70,7 +70,7 @@ app.controller("TasksCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 
 						cost: 50,
 						image: "http://localhost/luditeam/images/woman-default-avatar.png",
-						competences: [
+						skills: [
 							{
 								name: "achats",
 								value: 10
@@ -82,7 +82,7 @@ app.controller("TasksCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 						name: "Jean",
 						cost: 150,
 						image: "http://localhost/luditeam/images/man-default-avatar.png",
-						competences: [
+						skills: [
 							
 							{
 								name: "ventes",
@@ -99,7 +99,7 @@ app.controller("TasksCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 						name: "Léa",
 						cost: 120,
 						image: "http://localhost/luditeam/images/woman-default-avatar.png",
-						competences: [
+						skills: [
 							{
 								name: "achats",
 								value: 10
@@ -111,24 +111,34 @@ app.controller("TasksCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 		];
 
 		$scope.tasks = [
+
+
+
+			
+
+
+
+
 			{
+				"id": "123",
 				"name": "Vendre hamburger",
 				"ua_needed": 10,
 				"ua_assigned": 10,
-				"competence": "Ventes",
+				"skill": "Ventes",
+				"volontary": false,
 				"assigned": [
 					{
 						"image": "http://localhost/luditeam/images/man-default-avatar.png",
 						"name": "Jean",
 						"cost": 150,
-						"competence": 100,
+						"skill": 100,
 						"hour_assigned": 5,
 						"hour_available": 5
 					},
 					{
 						"image": "http://localhost/luditeam/images/woman-default-avatar.png",
 						"name": "Audrey",
-						"competence": 20,
+						"skill": 20,
 						"hour_assigned": 5,
 						"hour_available": 5
 					}
@@ -136,17 +146,18 @@ app.controller("TasksCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 			},
 
 			{
+				"id": "456",
 				"name": "acheter de la salade",
 				"ua_needed": 5,
 				"ua_assigned": 4,
 
-				"competence": "Achat",
+				"skill": "Achat",
 				"assigned": [
 					{
 						"image": "http://localhost/luditeam/images/man-default-avatar.png",
 						"name": "Pierrre",
 						"cost": 150,
-						"competence": 100,
+						"skill": 100,
 						"hour_assigned": 4,
 						"hour_available": 5
 					}
@@ -162,12 +173,28 @@ app.controller("TasksCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 			$scope.selectedTask = task;
 			$('.overlay').popup({
 	            opacity: 0.9,
+	            onclose: function(){
+	            	$scope.selectedTask = null;
+	            }
 
 	        }).popup('show');
 		}
 
 		$scope.closeOverlay = function(){
 			$('.overlay').popup('hide');
+		}
+
+		$scope.selectPerson = function(person){
+			var task = $scope.selectedTask;
+			//call service add_person
+			for (var i = 0; i < $scope.tasks.length; i++){
+				if(task.id == $scope.tasks[i])
+				{
+					$scope.tasks[i].push();
+					break;
+				}
+			}
+			$scope.closeOverlay();
 		}
 
 }])
