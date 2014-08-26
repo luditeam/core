@@ -1,12 +1,13 @@
 app.service("webServices",['userPrefs', function(userPrefs){
 	return {
 		Methods: {GET: "GET", POST: "POST", PUT: "PUT", DELETE: "DELETE"},
-		_url: "http://entrepreneur.luditest.cloudbees.net/rest/",
-		_isMock : true,
+		_url: "http://prod1.luditeam.com/entrepreneur-server/rest/",
+		_isMock : false,
+		_isJsonp : false,
 		_get: function(service, type, params, onSuccess, onError){
 			params = params || {};
-			params.i18n = userPrefs.i18n;
-			params.token = userPrefs.token;
+			//params.i18n = userPrefs.i18n;
+			//params.token = userPrefs.token;
 
 			if(this._isMock){
 				var url = "mocks/" + service.replace(/\//g, "_")+ ".json";
@@ -14,7 +15,7 @@ app.service("webServices",['userPrefs', function(userPrefs){
 				$.ajax({
 					dataType: "json",
 					url: url,
-					params: params || {},
+					data: params || {},
 					type: type || this.Methods.GET,
 					success: onSuccess || function(){},
 					error: onError || function(){console.error("Exception in service: "+ service)}
@@ -22,10 +23,10 @@ app.service("webServices",['userPrefs', function(userPrefs){
 			}
 			else
 				$.ajax({
-					dataType: "jsonp",
-					url: this._url + service + "?callback=?",
+					dataType: this._isJsonp? "jsonp" : "json",
+					url: this._url + service + (this._isJsonp? "?callback=?" : ""),
 					type: type || this.Methods.GET,
-					params: params || {},
+					data: params || {},
 					success: onSuccess || function(){},
 					error: onError || function(){console.error("Exception in service: "+ service)}
 				});
@@ -36,13 +37,29 @@ app.service("webServices",['userPrefs', function(userPrefs){
 			var params = {};
 			this._get("", this.Methods.GET, params, onSuccess, onError);
 		},
-		getMandatedCompanies: function(characterid){
-			var params = {};
-			this._get("company/mandatedcharacterid/"+characterid, this.Methods.GET, params, onSuccess, onError);
+		/**
+		 * Return company where user has mandate
+		 * @param  {int} characterid
+		 * @param  {function} onSuccess
+		 * @param  {function} onError
+		 * @return {undefined}
+		 */
+		getMandatedCompanies: function(characterid, onSuccess, onError){
+			this._get("company/mandatedcharacterid/"+characterid, this.Methods.GET, null, onSuccess, onError);
 		},
-		setCompany: function(){
-			var params = {};
-			this._get("", this.Methods.GET, params, onSuccess, onError);
+		/**
+		 * Create a company
+		 * @param {int} character_id
+		 * @param {string} name
+		 * @param {int} capital
+		 * @param {int} shares
+		 * @param {int} activity
+		 * @param {function} onSuccess
+		 * @param {function} onError
+		 */
+		setCompany: function(character_id, name, capital, shares, activity, onSuccess, onError){
+			var params = {character_id: character_id, name: name, capital: capital, shares:shares, activity:activity};
+			this._get("company/", this.Methods.POST, params, onSuccess, onError);
 		},
 		updateCompany: function(){
 			var params = {};
@@ -85,7 +102,7 @@ app.service("webServices",['userPrefs', function(userPrefs){
 
 		/*********************** USER *******************************************/
 		logUser: function(login, password, rememberme, onSuccess, onError){
-			var params = {login : login, password: password, rememberme: rememberme};
+			var params = {login : login, password: password/*, rememberme: rememberme*/};
 			this._get("user/login", this.Methods.POST, params, onSuccess, onError);
 		},
 
@@ -101,6 +118,17 @@ app.service("webServices",['userPrefs', function(userPrefs){
 		},
 
 		/*********************** /USER *******************************************/
+
+		/**************************** CHARACTER **********************************/
+		getCharacter: function(user_id, universe_id, onSuccess, onError){
+			this._get("gamecharacter/userid/"+user_id+"/universeid/"+universe_id, this.Methods.GET, null, onSuccess, onError);
+		},
+
+		setCharacter: function(user_id, universe_id, name, avatar_id, onSuccess, onError){
+			var params = {user_id: user_id, universe_id: universe_id, name:name, avatar_id:avatar_id};
+			this._get("gamecharacter/", this.Methods.POST, params, onSuccess, onError);
+		},
+		/****************************** /CHARACTER *******************************/
 
 		/*********************** WORKERS *******************************************/
 		getCompanyWorkers: function(){

@@ -47,6 +47,28 @@ app.config(['$routeProvider', '$locationProvider',
             controller: 'LoginCtrl',
             controllerAs: 'login'
           })
+          .when('/invit/:token', {
+            templateUrl: 'views/_new-user.html',
+            controller: 'LoginCtrl',
+            controllerAs: 'login'
+          })
+          .when('/new-character', {
+            templateUrl: 'views/_new-character.html',
+            controller: 'LoginCtrl',
+            controllerAs: 'login'
+          })
+          .when('/new-company', {
+            templateUrl: 'views/_new-company.html',
+            controller: 'LoginCtrl',
+            controllerAs: 'login'
+          })
+
+          .when('/load-character', {
+            templateUrl: 'views/_load-character.html',
+            controller: 'LoginCtrl',
+            controllerAs: 'login'
+          })
+
           .when('/cnil', {
             templateUrl: 'views/_cnil.html',
             //controller: 'TasksCtrl',
@@ -70,11 +92,11 @@ app.config(['$routeProvider', '$locationProvider',
     $rootScope.unSecuredRoute = ["/cgu", "/cnil", "/retrieve-password"];
     // register listener to watch route changes
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-      if (!$rootScope.user.logged) {
+      if ($rootScope.session.user === null) {
         // no logged user, we should be going to #login
         
         if (!next.$$route || next.$$route.templateUrl != "views/_login.html" ) {
-          if($rootScope.unSecuredRoute.indexOf(next.$$route.originalPath) == -1)
+          if(!next.$$route || $rootScope.unSecuredRoute.indexOf(next.$$route.originalPath) == -1)
             $location.path( "/login" );
         } 
       }

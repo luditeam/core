@@ -1,0 +1,55 @@
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Company creation</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="company_name">Company name</label>  
+  <div class="col-md-6">
+  <input id="company_name" name="company_name" type="text" placeholder="" class="form-control input-md" required="" ng-model="company.name">
+  <span class="help-block">Choose the name of your company</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Capital">Initial capital</label>  
+  <div class="col-md-6">
+  <input id="Capital" name="Capital" type="number" min="1" value="1" placeholder="" class="form-control input-md" required="" ng-model="company.capital">
+  <span class="help-block">Allocate a part of your capital to the company</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="shares">Shares</label>  
+  <div class="col-md-6">
+  <input id="shares" name="shares" type="number" min="1" value="1" placeholder="" class="form-control input-md" required="" ng-model="company.shares">
+  <span class="help-block">How many shares do you want?</span>  
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="activity">Activity</label>
+  <div class="col-md-6">
+    <select id="activity" name="activity" class="form-control" ng-model="company.activity">
+      <option value="FOOD_AND_BEVERAGE" seelected="selected">Food and beverage 1</option>
+      <option value="FOOD_AND_BEVERAGE">Food and beverage 2</option>
+    </select>
+  </div>
+</div>
+
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for=""></label>
+  <div class="col-md-4">
+    <button id="" name="" class="btn btn-primary" ng-click="createCompany()">Create</button>
+  </div>
+</div>
+
+</fieldset>
+</form>

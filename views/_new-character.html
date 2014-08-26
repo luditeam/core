@@ -1,0 +1,53 @@
+<div>
+	<form class="form-horizontal">
+		<fieldset>
+
+		<!-- Form Name -->
+		<legend>Création de votre personnage</legend>
+
+		<!-- Multiple Radios (inline) -->
+		<div class="control-group">
+		  <label class="control-label" for="radios">Vous êtes</label>
+		  <div class="controls">
+		    <label class="radio inline" for="radios-0">
+		      <input type="radio" name="radios" id="radios-0" value="male" checked="checked" ng-model="character.sex">
+		      Un homme
+		    </label>
+		    <label class="radio inline" for="radios-1">
+		      <input type="radio" name="radios" id="radios-1" value="female" ng-model="character.sex">
+		      Une femme
+		    </label>
+		  </div>
+		</div>
+
+		<div ng-if="character.sex == 'male'">
+			avatar male 
+		</div>
+		<div ng-if="character.sex == 'female'">
+			avatar female 
+		</div>
+		<!-- Text input-->
+		<div class="control-group">
+		  <label class="control-label" for="nickname">Nom du personnage</label>
+		  <div class="controls">
+		    <input id="nickname" name="nickname" type="text" placeholder="" class="input-xlarge" required=""  ng-model="character.name">
+		    <p class="help-block">Nom sous lequel vous apparaîtrez dans la jeu</p>
+		  </div>
+		</div>
+
+
+		
+
+		<!-- Button -->
+		<div class="control-group">
+		  <label class="control-label" for="singlebutton"></label>
+		  <div class="controls">
+		    <button id="singlebutton" name="singlebutton" class="btn btn-primary" ng-click="createCharacter()">Creer mon compte</button>
+		  </div>
+		</div>
+
+		</fieldset>
+	</form>
+
+
+</div>
