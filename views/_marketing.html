@@ -1,1 +1,83 @@
-please edit views/_marketing.html
+<div class="row">
+	<div class="product col-xs-12 col-sm-6 col-md-6 col-lg-6" ng-repeat="product in products.portfolioItems">
+		<div class="widget">
+			<div class="navbar widget-purple-light">
+				<ul class="nav navbar-nav">
+					<li class="widget-icon"><i class="fa fa-cubes fa-2x"></i></li>
+					<li class="widget-title">{{product.productType.name}}</li>
+				</ul>
+				<ul class="navbar-right">
+			      	<li class="fa fa-cog fa-lg widget-menu"></li>
+			        <li class="fa fa-times fa-lg widget-menu"></li>
+			    </ul>
+			</div>
+			<div role="content">
+				<div class="widget-body">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="widget-info">
+								<span class="info-label">Row materials cost</span>	
+								<span class="info-value widget-font-green">{{product.productType.costOfRawMaterials.amount | number}}€</span>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="widget-info">
+								<span class="info-label">Row materials stock</span>	
+								<span class="info-value widget-font-pink">{{product.stockOfRawMaterials | number}}</span>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="widget-info">
+								<span class="info-label">Product stock</span>	
+								<span class="info-value widget-font-blue">{{product.stockOfFinishedGoods | number}}</span>
+							</div>
+
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="widget-info">
+								<span class="info-label">Last sells</span>	
+								<span class="info-value widget-font-orange">{{product.lastNumberOfSales | number}}</span>
+							</div>
+						</div>
+						
+						
+						
+						
+					</div>
+					<div class="row widget">
+						<form role="form" name="productedit" novalidate>
+						<div class="widget-form row">
+							
+								<!-- Text input-->
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+									<div class="form-group" ng-class="{'has-error': productedit.sellprice.$invalid}">
+									  <label class="control-label" for="sellprice">Selling price (€)</label>  
+									  <div>
+									  	<input id="sellprice" ng-model="product.sellprice" name="sellprice" type="number" step="any"  value="{{product.sellingPrice | number}}" class="form-control input-md">
+									    
+									  </div>
+									  <p class="help-block error-block" ng-if="productedit.sellprice.$invalid && !productedit.sellprice.$pristine">{{'BAD_NUMBER' | translate}}</p>
+									</div>
+								</div>
+
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+									<div class="form-group" ng-class="{'has-error': productedit.sellforcast.$invalid}">
+									  <label class=" control-label" for="sellforcast">Sell forcast</label>  
+									  <div>
+									  	<input id="sellforcast" ng-min="0" ng-model="product.sellforcast" name="sellforcast" type="number"step="any"  value="{{product.salesForecast | number}}" class="form-control input-md">
+									    
+									    
+									  </div>
+									  <p class="help-block error-block" ng-if="productedit.sellforcast.$invalid && !productedit.sellforcast.$pristine">{{'BAD_NUMBER' | translate}}</p>
+									</div>
+								</div>
+							
+						</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

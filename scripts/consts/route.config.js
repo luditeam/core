@@ -2,16 +2,17 @@ app.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
         
         $routeProvider
-          .when('/user-scheduling'/*:id*/, {
-            templateUrl: 'views/_user_scheduling.html',
-            controller: 'UserSchedulingCtrl',
-            controllerAs: 'userScheduling'
-          })
           .when('/login', {
             templateUrl: 'views/_login.html',
             controller: 'LoginCtrl',
             controllerAs: 'login'
           })
+          .when('/user-scheduling'/*:id*/, {
+            templateUrl: 'views/_user_scheduling.html',
+            controller: 'UserSchedulingCtrl',
+            controllerAs: 'userScheduling'
+          })
+          
           .when('/error/:message', {
             templateUrl: 'views/_welcome.html',
             controller: 'WelcomeCtrl',

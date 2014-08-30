@@ -15,7 +15,9 @@ For more info and more free Bootstrap 3 HTML themes, visit http://startbootstrap
 body {
   margin-top: 50px;
 }
-
+ul, li {
+  list-style: none;
+}
 #wrapper {
   padding-left: 0;
 }
@@ -99,7 +101,9 @@ table.tablesorter thead tr th:hover {
   }
 
   /* Side Nav */
-
+  .no-sidebar{
+    padding-left: 0px !important;
+  }
   .side-nav {
 	margin-left: -225px;
 	left: 225px;
@@ -175,7 +179,243 @@ img.center {
   text-align: center;
 }
 
+.widget .widget-icon{
+  width: 40px;
+}
 
+.widget .widget-title{
+  font-size: 16px;
+  line-height: 28px;
+  height: 28px;
+  text-transform: capitalize;
+}
+.widget .navbar{
+  color: #EEE;
+  padding: 5px;
+  min-height: 40px;
+  height: 40px;
+  border-radius: 3px 3px 0 0;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.widget .widget-menu{
+  line-height: 22px;
+  height: 28px;
+  padding: 5px;
+}
+
+.widget .widget-body{
+  background: #FCFCFC;
+  border-radius: 0 0 3px 3px;
+  border: 1px solid #E0E0E0;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.widget .widget-no-margin{
+  padding: 0;
+  margin: 0;
+}
+
+.widget .widget-green-dark{
+  background: #356e35;
+  border: 1px solid #053e05;
+}
+
+.widget .widget-green{
+  background: #496949;
+  border: 1px solid #194929;
+}
+
+.widget .widget-green-light{
+  background: #71843f;
+  border: 1px solid #51640f;
+}
+
+.widget .widget-purple{
+  background: #6E3671;
+  border: 1px solid #E0E0E0;
+}
+
+.widget .widget-purple-light{
+  background: #6e587a;
+  border: 1px solid #E0E0E0;
+}
+
+.widget .widget-pink{
+  background: #ac5287;
+  border: 1px solid #7c3257;
+}
+
+.widget .widget-pink-light{
+  background: #a8829f;
+  border: 1px solid #78526f;
+}
+
+.widget .widget-blue-light{
+  background: #92a2a8;
+  border: 1px solid #627278;
+}
+.widget .widget-teal{
+  background: #568a89;
+  border: 1px solid #265a59;
+}
+.widget .widget-blue{
+  background: #57889c;
+  border: 1px solid #27586c;
+}
+.widget .widget-black-light{
+  background: #4c4f53;
+  border: 1px solid #E0E0E0;
+}
+.widget .widget-black{
+  background: #404040;
+  border: 1px solid #101010;
+}
+.widget .widget-yellow{
+  background: #b09b5b;
+  border: 1px solid #805b2b;
+}
+.widget .widget-orange{
+  background: #c79121;
+  border: 1px solid #975101;
+}
+.widget .widget-brown{
+  background: #a57225;
+  border: 1px solid #754205;
+}
+.widget .widget-red{
+  background: #a90329;
+  border: 1px solid #790309;
+}
+
+.widget .widget-red-light{
+  background: #a65858;
+  border: 1px solid #762828;
+}
+
+.widget .navbar-nav>li, .widget .navbar-nav {
+  float: left !important;
+}
+
+
+.widget .navbar-nav.navbar-right:last-child {
+  margin-right: -15px !important;
+}
+
+.widget .navbar-right {
+  float: right!important;
+}
+
+
+@media (max-width:768px) {
+  .widget .navbar-nav>li, .widget .navbar-nav {
+    margin: 0;
+  }
+}
+
+
+.widget .widget-info{
+   
+   border: 1px solid #F0F0F0;
+   margin: 2px;
+   height: 80px;
+}
+.widget .widget-info .info-label{
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #909090;
+  text-align: center;
+  height: 40px;
+  display: block;
+} 
+.widget .widget-info .info-value{
+    font-size: 24px;
+    display: block;
+    font-weight: bold;
+    height: 40px;
+    text-align: center;
+}
+
+
+.widget .widget-font-green-dark{
+  color: #356e35;
+}
+
+.widget .widget-font-green{
+  color: #496949;
+}
+
+.widget .widget-font-green-light{
+  color: #71843f;
+}
+
+.widget .widget-font-purple{
+  color: #6E3671;
+}
+
+.widget .widget-font-purple-light{
+  color: #6e587a;
+}
+
+.widget .widget-font-pink{
+  color: #ac5287;
+}
+
+.widget .widget-font-pink-light{
+  color: #a8829f;
+}
+
+.widget .widget-font-blue-light{
+  color: #92a2a8;
+}
+.widget .widget-font-teal{
+  color: #568a89;
+}
+.widget .widget-font-blue{
+  color: #57889c;
+}
+.widget .widget-font-black-light{
+  color: #4c4f53;
+}
+.widget .widget-font-black{
+  color: #404040;
+}
+.widget .widget-font-yellow{
+  color: #b09b5b;
+}
+.widget .widget-font-orange{
+  color: #c79121;
+}
+.widget .widget-font-brown{
+  color: #a57225;
+}
+.widget .widget-font-red{
+  color: #a90329;
+}
+
+.widget .widget-red-light{
+  background: #a65858;
+}
+.widget .widget-form div.form-group{
+  padding: 5px;
+  border: 1px solid #F0F0F0;
+  margin: 2px;
+}
+.widget .widget-form label{
+  font-size: 16px;
+  color: #909090;
+  font-weight: normal;
+  text-transform: uppercase;
+  
+}
+
+.widget .widget-form .form-group div{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
 /*********************************************** LOGIN ************************************************************/
 
 
@@ -226,6 +466,9 @@ img.center {
 .box-landscape-mobile{
   min-width: 480px;
 }
+
+
+
 /*********************************************** TASKS ************************************************************/
 
 

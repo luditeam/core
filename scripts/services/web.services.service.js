@@ -1,4 +1,4 @@
-app.service("webServices",['userPrefs', function(userPrefs){
+app.service("webServices",[ function(){
 	return {
 		Methods: {GET: "GET", POST: "POST", PUT: "PUT", DELETE: "DELETE"},
 		_url: "http://prod1.luditeam.com/entrepreneur-server/rest/",
@@ -6,8 +6,6 @@ app.service("webServices",['userPrefs', function(userPrefs){
 		_isJsonp : false,
 		_get: function(service, type, params, onSuccess, onError){
 			params = params || {};
-			//params.i18n = userPrefs.i18n;
-			//params.token = userPrefs.token;
 
 			if(this._isMock){
 				var url = "mocks/" + service.replace(/\//g, "_")+ ".json";
@@ -68,6 +66,10 @@ app.service("webServices",['userPrefs', function(userPrefs){
 		deleteCompany: function(){
 			var params = {};
 			this._get("", this.Methods.GET, params, onSuccess, onError);
+		},
+
+		getCompanyProduct: function(companyid, onSuccess, onError){
+			this._get("product/companyid/"+companyid, this.Methods.GET, null, onSuccess, onError);
 		},
 
 		/***********************  /COMPANY *******************************************/

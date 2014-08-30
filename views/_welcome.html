@@ -1,5 +1,162 @@
-<div>
-  welcome
-  <a href="#login">Login</a>
-  <a href="#user-scheduling">user/scheduling</a>
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<div class="widget">
+				<div class="navbar widget-purple">
+					<ul class="nav navbar-nav">
+						<li class="widget-icon"><i class="fa fa-tachometer fa-2x"></i></li>
+						<li class="widget-title">Graphics</li>
+					</ul>
+					<ul class="navbar-right">
+				      	<li class="fa fa-cog fa-lg widget-menu"></li>
+				        <li class="fa fa-times fa-lg widget-menu"></li>
+				    </ul>
+				</div>
+				<div role="content">
+					<div class="widget-body">
+						<div id="chart1"></div>
+						<script>
+							c3.generate({
+								bindto: "#chart1",
+							    data: {
+							        columns: [
+							            ['member', 300, 350, 300, 310, 330, 300],
+							            ['sells', 130, 100, 340, 200, 150, 50]
+							        ],
+							        types: {
+							            member: 'area',
+							            sells: 'area-spline'
+							        }
+							    }
+							});
+						</script>
+					</div>
+
+				</div>
+			</div>
+
+				<div class="widget">
+					<div class="navbar widget-red">
+						<ul class="nav navbar-nav">
+							<li class="widget-icon"><i class="fa fa-check fa-2x"></i></li>
+							<li class="widget-title">Objectives</li>
+						</ul>
+						<ul class="navbar-right">
+					      	<li class="fa fa-cog fa-lg widget-menu"></li>
+					        <li class="fa fa-times fa-lg widget-menu"></li>
+					    </ul>
+					</div>
+					<div role="content">
+						<div class="widget-body row widget-no-margin">
+							<div id="chart2"></div>
+						</div>
+						<script>
+							var chart = c3.generate({
+							    bindto:"#chart2",
+							    data: {
+							        // iris data from R
+							        columns: [
+							            ["setosa", 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2],
+            ["versicolor", 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.8, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.7, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3],
+            ["virginica", 2.5, 1.9, 2.1, 1.8, 2.2, 2.1, 1.7, 1.8, 1.8, 2.5, 2.0, 1.9, 2.1, 2.0, 2.4, 2.3, 1.8, 2.2, 2.3, 1.5, 2.3, 2.0, 2.0, 1.8, 2.1, 1.8, 1.8, 1.8, 2.1, 1.6, 1.9, 2.0, 2.2, 1.5, 1.4, 2.3, 2.4, 1.8, 1.8, 2.1, 2.4, 2.3, 1.9, 2.3, 2.5, 2.3, 1.9, 2.0, 2.3, 1.8],
+							        ],
+							        type : 'pie'
+							    }
+							});
+						</script>
+					</div>
+				</div>
+	</div>
+
+
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		<div class="widget">
+			<div class="navbar widget-green">
+				<ul class="nav navbar-nav">
+					<li class="widget-icon"><i class="fa fa-edit fa-2x"></i></li>
+					<li class="widget-title">To do list</li>
+				</ul>
+				<ul class="navbar-right">
+			      	<li class="fa fa-cog fa-lg widget-menu"></li>
+			        <li class="fa fa-times fa-lg widget-menu"></li>
+			    </ul>
+			</div>
+			<div role="content">
+				<div class="widget-body">
+					Nullam dictum feugiat accumsan. Aliquam erat volutpat. Mauris et ante quis nisi rutrum eleifend non ac risus. Aliquam viverra odio in erat volutpat, aliquet dictum mi volutpat. Ut finibus nisl massa, eget imperdiet massa ullamcorper sed. Suspendisse non massa sit amet massa scelerisque porttitor sed eu urna. Mauris sollicitudin dictum nisi, ac feugiat nibh facilisis id. Quisque vestibulum diam ac dui scelerisque rhoncus. Duis quis erat dolor. Quisque ullamcorper viverra eros, nec vehicula ligula facilisis quis. Proin at purus mollis, posuere mauris eu, ultrices ligula. Vivamus vulputate, turpis et pretium vestibulum, enim leo tempor lectus, vel fermentum sem leo at nisl. Etiam a turpis felis.
+
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row">
+			
+				<div class="widget col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<div class="navbar widget-orange">
+						<ul class="nav navbar-nav">
+							<li class="widget-icon"><i class="fa fa-comments-o fa-2x"></i></li>
+							<li class="widget-title">Comments</li>
+						</ul>
+						<ul class="navbar-right">
+					      	<li class="fa fa-cog fa-lg widget-menu"></li>
+					        <li class="fa fa-times fa-lg widget-menu"></li>
+					    </ul>
+					</div>
+					<div role="content">
+						<div class="widget-body">
+								
+				<p>Donec euismod ut felis non aliquet. Morbi id magna a ex condimentum fermentum. Maecenas congue elit sed quam fringilla, nec varius ligula feugiat. Nam vehicula, elit vitae pretium finibus, 	
+				</p>
+				<p>Donec euismod ut felis non aliquet. Morbi id magna a ex condimentum fermentum. Maecenas congue elit sed quam fringilla, nec varius ligula feugiat. Nam vehicula, elit vitae pretium finibus, 	
+				</p>
+				<p>
+				Donec euismod ut felis non aliquet. Morbi id magna a ex condimentum fermentum. Maecenas congue elit sed quam fringilla, nec varius ligula feugiat. Nam vehicula, elit vitae pretium finibus, 	
+				</p>
+				<p>
+				Donec euismod ut felis non aliquet. Morbi id magna a ex condimentum fermentum. Maecenas congue elit sed quam fringilla, nec varius ligula feugiat. Nam vehicula, elit vitae pretium finibus, 	
+				</p>
+						</div>
+
+					</div>
+			</div>
+
+
+
+			<div class="widget col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<div class="navbar widget-blue-light">
+						<ul class="nav navbar-nav">
+							<li class="widget-icon"><i class="fa fa-group fa-2x"></i></li>
+							<li class="widget-title">Member</li>
+						</ul>
+						<ul class="navbar-right">
+					      	<li class="fa fa-cog fa-lg widget-menu"></li>
+					        <li class="fa fa-times fa-lg widget-menu"></li>
+					    </ul>
+					</div>
+					<div role="content">
+						<div class="widget-body">
+							<table class="table">
+								<tr>
+									<th>Name</th>
+									<th>FirstName</th>
+								</tr>
+								<tr>
+									<td>Bob</td>
+									<td>Dylan</td>
+								</tr>
+								<tr>
+									<td>Lara</td>
+									<td>Fabian</td>
+								</tr>
+								<tr>
+									<td>Sara</td>
+									<td>Vigotte</td>
+								</tr>
+							</table>
+						</div>
+
+					</div>
+			</div>
+	</div>
+	
 </div>

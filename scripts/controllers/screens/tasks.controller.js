@@ -1,4 +1,4 @@
-app.controller("TasksCtrl", ['$scope', '$rootScope', 'webServices', '$location', 'localStorageService', 'userPrefs', function($scope, $rootScope, webServices, $location, localStorageService, userPrefs){
+app.controller("TasksCtrl", ['$scope', '$rootScope', 'webServices', '$location', 'localStorageService', function($scope, $rootScope, webServices, $location, localStorageService){
 		$scope.selectedTask = null;
 		$scope.direction_hour = "strict";
 		$scope.direction_cost = "strict";
