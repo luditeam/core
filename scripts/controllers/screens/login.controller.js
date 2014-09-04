@@ -95,11 +95,8 @@ app.controller("LoginCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 		var onAuthSuccess = function(gameData){
 			
 			$scope.setLoading(true);
-			//debug
-			if(!gameData.user){
-				gameData = {user: gameData}
-				gameData.universes = [{id: -1, name: "My first univers"}];
-			}
+			
+			gameData.universes = gameData.universes || (gameData.universeInvitations.length? gameData.universeInvitations : [{id: -1, name: "My first univers"}]);
 
 			$scope.setUser(gameData.user);
 			$scope.setLanguage(gameData.user.i18n || consts.default_i18n);

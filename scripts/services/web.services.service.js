@@ -1,6 +1,6 @@
 app.service("webServices",[ function(){
 	return {
-		Methods: {GET: "GET", POST: "POST", PUT: "PUT", DELETE: "DELETE"},
+		Methods: {GET: "GET", POST: "POST", PUT: "PUT", DELETE: "POST"},
 		_url: "http://prod1.luditeam.com/entrepreneur-server/rest/",
 		_isMock : false,
 		_isJsonp : false,
@@ -13,6 +13,7 @@ app.service("webServices",[ function(){
 				$.ajax({
 					dataType: "json",
 					url: url,
+					contentType: 'application/json; charset=UTF-8',
 					data: params || {},
 					type: type || this.Methods.GET,
 					success: onSuccess || function(){},
@@ -24,7 +25,8 @@ app.service("webServices",[ function(){
 					dataType: this._isJsonp? "jsonp" : "json",
 					url: this._url + service + (this._isJsonp? "?callback=?" : ""),
 					type: type || this.Methods.GET,
-					data: params || {},
+					data: params || null,
+					contentType: 'application/json; charset=UTF-8',
 					success: onSuccess || function(){},
 					error: onError || function(){console.error("Exception in service: "+ service)}
 				});
@@ -72,6 +74,10 @@ app.service("webServices",[ function(){
 			this._get("product/companyid/"+companyid, this.Methods.GET, null, onSuccess, onError);
 		},
 
+		updateCompanyProduct: function(item_id, sales_forecast, selling_price, onSuccess, onError){
+			var params = {item_id:item_id, sales_forecast:sales_forecast, selling_price:selling_price};
+			this._get("product/", this.Methods.PUT, params, onSuccess, onError);
+		},
 		/***********************  /COMPANY *******************************************/
 
 		/*********************** SCHEDULE *******************************************/
@@ -107,8 +113,6 @@ app.service("webServices",[ function(){
 			var params = {login : login, password: password/*, rememberme: rememberme*/};
 			this._get("user/login", this.Methods.POST, params, onSuccess, onError);
 		},
-
-		/*********************** USER *******************************************/
 		logByToken: function(token, onSuccess, onError){
 			var params = {token : token};
 			this._get("user/login/token", this.Methods.POST, params, onSuccess, onError);

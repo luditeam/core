@@ -49,7 +49,7 @@ app.config(function ($translateProvider) {
     CREATE_COMPANY: 'Create company',
     LOG_IN: 'Log in',
     FORGOT_PASS: 'Forgotten password',
-    REMEMBER_ME: 'Toggle navigation',
+    REMEMBER_ME: 'Remember me',
     CNIL_STATEMENT: 'CNIL statement',
     CGU: 'Terms of use',
     SIGN_IN: 'Sign in',

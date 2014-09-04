@@ -1,16 +1,4 @@
-/* Will be compiled down to a single stylesheet with your sass files */
 
-/* 
-Author: Start Bootstrap - http://startbootstrap.com
-'SB Admin' HTML Template by Start Bootstrap
-
-All Start Bootstrap themes are licensed under Apache 2.0. 
-For more info and more free Bootstrap 3 HTML themes, visit http://startbootstrap.com!
-*/
-
-/* ATTN: This is mobile first CSS - to update 786px and up screen width use the media query near the bottom of the document! */
-
-/* Global Styles */
 
 body {
   margin-top: 50px;
@@ -54,38 +42,42 @@ ul, li {
 }
 
 
-/* Nav Announcements */
 
-.announcement-heading {
-  font-size: 50px;
-  margin: 0;
-}
+.side-nav {
+    border-radius: 0;
+    border: none;
+    overflow-y: auto;
+    background: #F0F0F0;
+    border: 1px solid #C0C0C0;
 
-.announcement-text {
-  margin: 0;
-}
-
-/* Table Headers */
-
-table.tablesorter thead {
-  cursor: pointer;
-}
-
-table.tablesorter thead tr th:hover {
-  background-color: #f5f5f5;
-}
-
-/* Flot Chart Containers */
-
-.flot-chart {
-  display: block;
-  height: 400px;
-}
-
-.flot-chart-content {
-  width: 100%;
-  height: 100%;
-}
+    border-top: 0;
+  }
+  .top-bar{
+    background: #F0F0F0;
+    border: 1px solid #C0C0C0;
+    
+  }
+  .navbar-brand{
+    color: #999;
+    font-weight: bold;
+  }
+  .top-bar a:active,
+  .top-bar a:link,
+  .top-bar a:focus{
+    color: #333;
+    font-size: 16px;
+  }
+  .side-nav a:active,
+  .side-nav a:link,
+  .side-nav a:focus {
+     background-color: #EEEEEE;
+     border: 1px solid #D0D0D0;
+     text-transform: uppercase;
+     color: #333;
+  }
+  .side-nav a:hover{
+    background-color: #E0E0E0!important;
+  }
 
 /* Edit Below to Customize Widths > 768px */
 @media (min-width:768px) {
@@ -97,7 +89,7 @@ table.tablesorter thead tr th:hover {
   }
 
   #page-wrapper {
-	padding: 15px 25px;
+	 padding: 15px 25px;
   }
 
   /* Side Nav */
@@ -105,61 +97,86 @@ table.tablesorter thead tr th:hover {
     padding-left: 0px !important;
   }
   .side-nav {
-	margin-left: -225px;
-	left: 225px;
-	width: 225px;
-	position: fixed;
-	top: 50px;
-	height: 100%;
-	border-radius: 0;
-	border: none;
-	background-color: #222222;
-	overflow-y: auto;
-  }
+  	margin-left: -225px;
+  	left: 225px;
+  	width: 225px;
+  	position: fixed;
+  	top: 50px;
+  	height: 100%;
+  	border-radius: 0;
+  	border: none;
+  	overflow-y: auto;
+    background: #F0F0F0;
+    border: 1px solid #C0C0C0;
 
+    border-top: 0;
+  }
+  .top-bar{
+    background: #F0F0F0;
+    border: 1px solid #C0C0C0;
+    
+  }
+  .navbar-brand{
+    color: #999;
+    font-weight: bold;
+  }
+  .top-bar a:active,
+  .top-bar a:link,
+  .top-bar a:focus{
+    color: #333;
+    font-size: 16px;
+  }
+  .side-nav a:active,
+  .side-nav a:link,
+  .side-nav a:focus {
+     background-color: #EEEEEE;
+     border: 1px solid #D0D0D0;
+     text-transform: uppercase;
+     margin-top: 5px;
+     color: #333;
+  }
+  .side-nav a:hover{
+    background-color: #E0E0E0!important;
+  }
   /* Bootstrap Default Overrides - Customized Dropdowns for the Side Nav */
 
   .side-nav>li.dropdown>ul.dropdown-menu {
-	position: relative;
-	min-width: 225px;
-	margin: 0;
-	padding: 0;
-	border: none;
-	border-radius: 0;
-	background-color: transparent;
-	box-shadow: none;
-	-webkit-box-shadow: none;
+  	position: relative;
+  	min-width: 225px;
+  	margin: 0;
+  	padding: 0;
+  	border: none;
+  	border-radius: 0;
+  	background-color: transparent;
+  	box-shadow: none;
+  	-webkit-box-shadow: none;
   }
 
   .side-nav>li.dropdown>ul.dropdown-menu>li>a {
-	color: #999999;
-	padding: 15px 15px 15px 25px;
+  	color: #999999;
+  	padding: 15px 15px 15px 25px;
   }
 
   .side-nav>li.dropdown>ul.dropdown-menu>li>a:hover,
   .side-nav>li.dropdown>ul.dropdown-menu>li>a.active,
   .side-nav>li.dropdown>ul.dropdown-menu>li>a:focus {
-	color: #fff;
-	background-color: #080808;
+  	color: #fff;
   }
 
   .side-nav>li>a {
-	width: 225px;
+     width: 225px;
   }
 
-  .navbar-inverse .navbar-nav>li>a:hover,
-  .navbar-inverse .navbar-nav>li>a:focus {
-	background-color: #080808;
-  }
+  
 
   /* Nav Messages */
 
   .messages-dropdown .dropdown-menu {
-	min-width: 300px;
+	   min-width: 300px;
   }
 
   .messages-dropdown .dropdown-menu li a {
-	white-space: normal;
+	   white-space: normal;
   }
 
   .navbar-collapse {
@@ -410,12 +427,90 @@ img.center {
   text-transform: uppercase;
   
 }
-
-.widget .widget-form .form-group div{
-    width: 40%;
-    margin-left: auto;
-    margin-right: auto;
+.widget .titled-item{
+  margin-bottom: 4px;
+  border: 1px solid #C0C0C0;
+  background: #FAFAFA;
+  padding: 3px;
+  content: " ";
+  display: table;
+  width: 100%;
 }
+.widget .titled-item span.content{
+  color: #333;
+  display: block;
+}
+.widget .titled-item span.title{
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+}
+.widget .titled-item .col-left{
+  float: left;
+  width: 45px;
+  height:  45px;
+  text-align: center;
+  line-height: 45px;
+}
+.widget .titled-item .col-left span{
+  display: block;
+  margin: auto;
+  line-height: 45px;
+  width: 45px;
+  text-align: center;
+  
+}
+
+.widget .titled-item.item-info .col-left{
+  
+  background: #CEE3F6;
+  border: 1px solid #AEB3C6;
+
+}
+
+.widget .titled-item.item-success .col-left{
+  
+  background: #CEF6D8;
+  border: 1px solid #9EC6A8;
+}
+.widget .titled-item.item-warning .col-left{
+  
+  background: #F6E3CE;
+  border: 1px solid #C6B3AE;
+}
+
+.widget .titled-item.item-error .col-left{
+  background: #F5A9BC;
+  border: 1px solid #C5799C;
+}
+.widget .titled-item.item-success .col-left span::before{
+   content: "\f00c";
+}
+.widget .titled-item.item-info .col-left span::before{
+   content: "\f129";
+}
+.widget .titled-item.item-warning .col-left span::before{
+   content: "\f071";
+}
+.widget .titled-item.item-error .col-left span::before{
+   content: "\f00d";
+}
+.widget .titled-item .col-right{
+  float: left;
+  margin-left: 5px;
+  word-wrap: break-word;
+  display: block;
+  max-width: 80%;
+}
+
+.widget .titled-item.no-title .col-right .content{
+  line-height: 45px;
+  font-size: 14px;
+}
+
+
+
 /*********************************************** LOGIN ************************************************************/
 
 

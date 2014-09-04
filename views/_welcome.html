@@ -4,7 +4,7 @@
 				<div class="navbar widget-purple">
 					<ul class="nav navbar-nav">
 						<li class="widget-icon"><i class="fa fa-tachometer fa-2x"></i></li>
-						<li class="widget-title">Graphics</li>
+						<li class="widget-title">Results</li>
 					</ul>
 					<ul class="navbar-right">
 				      	<li class="fa fa-cog fa-lg widget-menu"></li>
@@ -15,30 +15,43 @@
 					<div class="widget-body">
 						<div id="chart1"></div>
 						<script>
-							c3.generate({
+							var chart = c3.generate({
+							    
 								bindto: "#chart1",
 							    data: {
+
+							        x: 'x',
 							        columns: [
-							            ['member', 300, 350, 300, 310, 330, 300],
-							            ['sells', 130, 100, 340, 200, 150, 50]
+							            ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
+							            ['member', 30, 200, 250, 400, 150, 250],
+							            ['sells', 130, 340, 200, 500, 250, 350]
 							        ],
 							        types: {
 							            member: 'area',
 							            sells: 'area-spline'
 							        }
+							    },
+							    axis: {
+							        x: {
+							            type: 'timeseries',
+							            tick: {
+							                format: '%Y-%m-%d'
+							            }
+							        }
 							    }
 							});
+							
 						</script>
 					</div>
 
 				</div>
 			</div>
 
-				<div class="widget">
+				<!--<div class="widget">
 					<div class="navbar widget-red">
 						<ul class="nav navbar-nav">
-							<li class="widget-icon"><i class="fa fa-check fa-2x"></i></li>
-							<li class="widget-title">Objectives</li>
+							<li class="widget-icon"><i class="fa fa-edit fa-2x"></i></li>
+							<li class="widget-title">To do list</li>
 						</ul>
 						<ul class="navbar-right">
 					      	<li class="fa fa-cog fa-lg widget-menu"></li>
@@ -46,25 +59,12 @@
 					    </ul>
 					</div>
 					<div role="content">
-						<div class="widget-body row widget-no-margin">
-							<div id="chart2"></div>
+						<div class="widget-body">
+							
 						</div>
-						<script>
-							var chart = c3.generate({
-							    bindto:"#chart2",
-							    data: {
-							        // iris data from R
-							        columns: [
-							            ["setosa", 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2],
-            ["versicolor", 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.8, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.7, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3],
-            ["virginica", 2.5, 1.9, 2.1, 1.8, 2.2, 2.1, 1.7, 1.8, 1.8, 2.5, 2.0, 1.9, 2.1, 2.0, 2.4, 2.3, 1.8, 2.2, 2.3, 1.5, 2.3, 2.0, 2.0, 1.8, 2.1, 1.8, 1.8, 1.8, 2.1, 1.6, 1.9, 2.0, 2.2, 1.5, 1.4, 2.3, 2.4, 1.8, 1.8, 2.1, 2.4, 2.3, 1.9, 2.3, 2.5, 2.3, 1.9, 2.0, 2.3, 1.8],
-							        ],
-							        type : 'pie'
-							    }
-							});
-						</script>
+						
 					</div>
-				</div>
+				</div>-->
 	</div>
 
 
@@ -72,8 +72,8 @@
 		<div class="widget">
 			<div class="navbar widget-green">
 				<ul class="nav navbar-nav">
-					<li class="widget-icon"><i class="fa fa-edit fa-2x"></i></li>
-					<li class="widget-title">To do list</li>
+					<li class="widget-icon"><i class="fa fa-check fa-2x"></i></li>
+					<li class="widget-title">Objectives</li>
 				</ul>
 				<ul class="navbar-right">
 			      	<li class="fa fa-cog fa-lg widget-menu"></li>
@@ -82,7 +82,55 @@
 			</div>
 			<div role="content">
 				<div class="widget-body">
-					Nullam dictum feugiat accumsan. Aliquam erat volutpat. Mauris et ante quis nisi rutrum eleifend non ac risus. Aliquam viverra odio in erat volutpat, aliquet dictum mi volutpat. Ut finibus nisl massa, eget imperdiet massa ullamcorper sed. Suspendisse non massa sit amet massa scelerisque porttitor sed eu urna. Mauris sollicitudin dictum nisi, ac feugiat nibh facilisis id. Quisque vestibulum diam ac dui scelerisque rhoncus. Duis quis erat dolor. Quisque ullamcorper viverra eros, nec vehicula ligula facilisis quis. Proin at purus mollis, posuere mauris eu, ultrices ligula. Vivamus vulputate, turpis et pretium vestibulum, enim leo tempor lectus, vel fermentum sem leo at nisl. Etiam a turpis felis.
+					<ul>
+								<li>
+		                            <a href="#{{page}}">
+		                                <div>
+		                                    <p>
+		                                        <strong>Sell 1000 sandwishs</strong>
+		                                        <span class="pull-right text-muted">40% Complete</span>
+		                                    </p>
+		                                    <div class="progress progress-striped active">
+		                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+		                                            <span class="sr-only">40% Complete (success)</span>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </a>
+		                        </li>
+		                        <li class="divider"></li>
+		                        <li>
+		                            <a href="#{{page}}">
+		                                <div>
+		                                    <p>
+		                                        <strong>Win 15000€</strong>
+		                                        <span class="pull-right text-muted">20% Complete</span>
+		                                    </p>
+		                                    <div class="progress progress-striped active">
+		                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+		                                            <span class="sr-only">20% Complete</span>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </a>
+		                        </li>
+		                        <li class="divider"></li>
+		                        <li>
+		                            <a href="#{{page}}">
+		                                <div>
+		                                    <p>
+		                                        <strong>Increase satifaction by 35%</strong>
+		                                        <span class="pull-right text-muted">60% Complete</span>
+		                                    </p>
+		                                    <div class="progress progress-striped active">
+		                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+		                                            <span class="sr-only">60% Complete (warning)</span>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </a>
+		                        </li>
+							</ul>
 
 				</div>
 
@@ -94,8 +142,8 @@
 				<div class="widget col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<div class="navbar widget-orange">
 						<ul class="nav navbar-nav">
-							<li class="widget-icon"><i class="fa fa-comments-o fa-2x"></i></li>
-							<li class="widget-title">Comments</li>
+							<li class="widget-icon"><i class="fa fa-check-square-o fa-2x"></i></li>
+							<li class="widget-title">To do list</li>
 						</ul>
 						<ul class="navbar-right">
 					      	<li class="fa fa-cog fa-lg widget-menu"></li>
@@ -105,16 +153,35 @@
 					<div role="content">
 						<div class="widget-body">
 								
-				<p>Donec euismod ut felis non aliquet. Morbi id magna a ex condimentum fermentum. Maecenas congue elit sed quam fringilla, nec varius ligula feugiat. Nam vehicula, elit vitae pretium finibus, 	
-				</p>
-				<p>Donec euismod ut felis non aliquet. Morbi id magna a ex condimentum fermentum. Maecenas congue elit sed quam fringilla, nec varius ligula feugiat. Nam vehicula, elit vitae pretium finibus, 	
-				</p>
-				<p>
-				Donec euismod ut felis non aliquet. Morbi id magna a ex condimentum fermentum. Maecenas congue elit sed quam fringilla, nec varius ligula feugiat. Nam vehicula, elit vitae pretium finibus, 	
-				</p>
-				<p>
-				Donec euismod ut felis non aliquet. Morbi id magna a ex condimentum fermentum. Maecenas congue elit sed quam fringilla, nec varius ligula feugiat. Nam vehicula, elit vitae pretium finibus, 	
-				</p>
+							<div class="titled-item no-title">
+								<div class="col-left"><input type="checkbox"></div>
+								<div class="col-right">
+									<div class="content">Read newspapers</div>
+								</div>
+
+							</div>
+							<div class="titled-item no-title">
+								<div class="col-left"><input type="checkbox"></div>
+								<div class="col-right">
+									<div class="content">Check financial result</div>
+								</div>
+
+							</div>
+							<div class="titled-item no-title">
+								<div class="col-left"><input type="checkbox"></div>
+								<div class="col-right">
+									<div class="content">Make advertisement</div>
+								</div>
+
+							</div>
+
+							<div class="titled-item no-title">
+								<div class="col-left"><input type="checkbox"></div>
+								<div class="col-right">
+									<div class="content">Find my catch phrase</div>
+								</div>
+
+							</div>
 						</div>
 
 					</div>
@@ -122,41 +189,60 @@
 
 
 
-			<div class="widget col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<div class="navbar widget-blue-light">
-						<ul class="nav navbar-nav">
-							<li class="widget-icon"><i class="fa fa-group fa-2x"></i></li>
-							<li class="widget-title">Member</li>
-						</ul>
-						<ul class="navbar-right">
-					      	<li class="fa fa-cog fa-lg widget-menu"></li>
-					        <li class="fa fa-times fa-lg widget-menu"></li>
-					    </ul>
-					</div>
-					<div role="content">
-						<div class="widget-body">
-							<table class="table">
-								<tr>
-									<th>Name</th>
-									<th>FirstName</th>
-								</tr>
-								<tr>
-									<td>Bob</td>
-									<td>Dylan</td>
-								</tr>
-								<tr>
-									<td>Lara</td>
-									<td>Fabian</td>
-								</tr>
-								<tr>
-									<td>Sara</td>
-									<td>Vigotte</td>
-								</tr>
-							</table>
-						</div>
+			
+			<div class="widget  col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<div class="navbar widget-red">
+					<ul class="nav navbar-nav">
+						<li class="widget-icon"><i class="fa fa-bell-o fa-2x"></i></li>
+						<li class="widget-title">Events</li>
+					</ul>
+					<ul class="navbar-right">
+				      	<li class="fa fa-cog fa-lg widget-menu"></li>
+				        <li class="fa fa-times fa-lg widget-menu"></li>
+				    </ul>
+				</div>
+				<div role="content">
+					<div class="widget-body">
+							<div class="titled-item item-success">
+								<div class="col-left"><span class="fa fa-2x"></span></div>
+								<div class="col-right">
+									<span class="title">Hire success</span>
+									<span class="content">You succefully hired a new employee</span>
+								</div>
 
+							</div>
+							<div class="titled-item item-info">
+								<div class="col-left"><span class="fa fa-2x"></span></div>
+								<div class="col-right">
+									<span class="title">Bad weather</span>
+									<span class="content">It's rainny today...</span>
+								</div>
+
+							</div>
+							<div class="titled-item item-warning">
+								<div class="col-left"><span class="fa fa-2x"></span></div>
+								<div class="col-right">
+									<span class="title">Employee Moral</span>
+									<span class="content">Care, your cooker's moral is still low</span>
+								</div>
+
+							</div>
+
+							<div class="titled-item item-error">
+								<div class="col-left"><span class="fa fa-2x"></span></div>
+								<div class="col-right">
+									<span class="title">Mission failed</span>
+									<span class="content">You haven't been able to produce 100 sandwishs</span>
+								</div>
+
+							</div>
 					</div>
+
+				</div>
 			</div>
+
+
+
 	</div>
 	
 </div>

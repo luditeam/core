@@ -46,29 +46,30 @@
 					</div>
 					<div class="row widget">
 						<form role="form" name="productedit" novalidate>
-						<div class="widget-form row">
+						<div class="widget-form">
 							
 								<!-- Text input-->
-								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
-									<div class="form-group" ng-class="{'has-error': productedit.sellprice.$invalid}">
-									  <label class="control-label" for="sellprice">Selling price (€)</label>  
-									  <div>
-									  	<input id="sellprice" ng-model="product.sellprice" name="sellprice" type="number" step="any"  value="{{product.sellingPrice | number}}" class="form-control input-md">
+								<div class="text-center">
+									<div class="form-group row" ng-class="{'has-error': productedit.sellprice.$invalid}">
+									  <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7"><label class="control-label" for="sellprice">Selling price (€)</label> </div>
+									   
+									  <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+									  	<input id="sellprice" ng-model="product.sellingPrice" name="sellprice" type="number" step="any"  ng-init="product.sellingPrice = product.sellingPrice || 0" class="form-control input-md" ng-change="updateProduct(product)">
 									    
 									  </div>
 									  <p class="help-block error-block" ng-if="productedit.sellprice.$invalid && !productedit.sellprice.$pristine">{{'BAD_NUMBER' | translate}}</p>
 									</div>
 								</div>
 
-								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
-									<div class="form-group" ng-class="{'has-error': productedit.sellforcast.$invalid}">
-									  <label class=" control-label" for="sellforcast">Sell forcast</label>  
-									  <div>
-									  	<input id="sellforcast" ng-min="0" ng-model="product.sellforcast" name="sellforcast" type="number"step="any"  value="{{product.salesForecast | number}}" class="form-control input-md">
+								<div class="text-center">
+									<div class="form-group row" ng-class="{'has-error': productedit.salesForecast.$invalid}">
+									  <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7"><label class=" control-label" for="salesForecast">Sell forcast</label> </div> 
+									  <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+									  	<input id="salesForecast" ng-min="0" ng-model="product.salesForecast" name="salesForecast" type="number" step="any"  ng-init="product.salesForecast = product.salesForecast || 0" class="form-control input-md" ng-change="updateProduct(product)">
 									    
 									    
 									  </div>
-									  <p class="help-block error-block" ng-if="productedit.sellforcast.$invalid && !productedit.sellforcast.$pristine">{{'BAD_NUMBER' | translate}}</p>
+									  <p class="help-block error-block" ng-if="productedit.salesForecast.$invalid && !productedit.salesForecast.$pristine">{{'BAD_NUMBER' | translate}}</p>
 									</div>
 								</div>
 							
