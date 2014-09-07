@@ -76,8 +76,8 @@ app.controller("RootCtrl", ['$rootScope', '$scope', '$location', '$log','webServ
 	$scope.setUnivers = function(id){
 		if($rootScope.session.universes){
 			for(var i = 0; i < $rootScope.session.universes.length; i++){
-				if ($rootScope.session.universes[i].id == id){
-					$rootScope.session.selected.univers = $rootScope.session.universes[i];
+				if ($rootScope.session.universes[i].universe.id == id){
+					$rootScope.session.selected.univers = $rootScope.session.universes[i].universe;
 					return;
 				}
 			}
@@ -166,11 +166,15 @@ app.controller("RootCtrl", ['$rootScope', '$scope', '$location', '$log','webServ
 	};
 	/****************************************** END TURN *********************************************************/
 	$scope.endTurn = function(){
-		
+		webServices.endTurn($scope.getCharacterId(), function(company){
+			//notif
+		});
 	};
 
 	$scope.truncate = function(i_string, max_length){
-		return i_string.substring(0,max_length) + (i_string.length > max_length? "...": "");
+		if(i_string && max_length)
+			return i_string.substring(0,max_length) + (i_string.length > max_length? "...": "");
+		return "";
 	}
 
 	$scope.setLoading = function(state){

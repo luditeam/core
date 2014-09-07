@@ -12,8 +12,7 @@ app.controller("MarketingCtrl", ['$scope', '$rootScope', '$location', 'webServic
 			clearTimeout(timer);
 		}
 		timer = setTimeout(function(){
-			console.warn(product);
-			webServices.updateCompanyProduct(product.id, product.salesForecast, product.sellingPrice, function(){
+			webServices.updateCompanyProduct(product, function(){
 				//notif
 			});
 		}, 2000);

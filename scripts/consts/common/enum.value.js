@@ -8,7 +8,7 @@ app.value("enums", {
 });
 
 app.value("consts", {
-	default_i18n: "fr"
+	default_i18n: "en"
 });
 app.value("activities", ['FOOD_AND_BEVERAGE']);
 

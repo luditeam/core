@@ -8,7 +8,8 @@ app.controller("LoginCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 			$scope.setCompanies(data.companies);
 			$scope.setCompany(toSelect || data.companies[0]);
 			$scope.save();
-			$location.path( "/welcome" );
+			$location.path($rootScope.backToRoute? $rootScope.backToRoute : "/welcome");
+			$rootScope.backToRoute = null;
 			$scope.setLoading(false);
 			$scope.$apply();
 		};
@@ -23,7 +24,7 @@ app.controller("LoginCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 		$scope.createCompany = function(isValid){
 			if (isValid)
 				webServices.setCompany($scope.getCharacterId(), $scope.company.name, $scope.company.capital, $scope.company.shares, $scope.company.activity, function(company){
-					startGame && startGame([company], company.id);
+					startGame && startGame({companies : [company]}, company.id);
 				});
 		};
 		
@@ -96,17 +97,20 @@ app.controller("LoginCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 			
 			$scope.setLoading(true);
 			
-			gameData.universes = gameData.universes || (gameData.universeInvitations.length? gameData.universeInvitations : [{id: -1, name: "My first univers"}]);
+			gameData.universes = gameData.universes || gameData.universeInvitations || [];
+
 
 			$scope.setUser(gameData.user);
 			$scope.setLanguage(gameData.user.i18n || consts.default_i18n);
-			//TODO: écran de choix d'univers ici, rajouter liste d'univers au user (nom/id/descr/...)
 			$scope.setUniverses(gameData.universes);
 			$scope.save();
-			if (true || gameData.universes.length === 1){//un seul univers
-				$scope.selectUnivers(-1);
+			if (gameData.universes.length === 1){//un seul univers
+				$scope.selectUnivers(gameData.universes[0].universe.id);
 			}
-			else if(0){//pas d'univers!
+			else if(!gameData.universes.length){//pas d'univers!
+				//TMP
+				$scope.catchException("ERROR", "No univers...");
+				return;
 				/**
 				 * STEP 3b: no universe, error message
 				 */
@@ -114,6 +118,9 @@ app.controller("LoginCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 				$scope.setLoading(false);
 			}
 			else{
+				//TMP
+				$scope.catchException("ERROR", "Multiple univers...");
+				return;
 				/**
 				 * STEP 3c: multiple universe, when choose back to 3a
 				 */

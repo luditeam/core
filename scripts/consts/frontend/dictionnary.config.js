@@ -54,7 +54,7 @@ app.config(function ($translateProvider) {
     CGU: 'Terms of use',
     SIGN_IN: 'Sign in',
     CHOOSE_ACTIVITY: 'You must choose an activity',
-    TOGGLE_NAV: 'Toggle navigation',
+    END_TURN: 'End Turn',
     TOGGLE_NAV: 'Toggle navigation',
     TOGGLE_NAV: 'Toggle navigation',
     TOGGLE_NAV: 'Toggle navigation',
