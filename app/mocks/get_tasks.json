@@ -1,0 +1,37 @@
+    [
+
+            {
+                "name": "Vendre hamburger",
+                "ua_needed": 10,
+                "ua_assigned": 10,
+                "skill": "Ventes",
+                "volontary": false,
+                "variable": false,
+                "assigned": [
+                    {
+                        "characterId": 1,
+                        "name": "Pierre",
+                        "available_hours": 5,
+                        "assigned_hours": 4,
+                        "job": "COOK",
+                        "moral": 75,
+                        "image": "http://localhost/luditeam/images/man-default-avatar.png",
+                        "default_skill_score": 15,
+                        "skills": [
+                            {
+                                "name": "achats",
+                                "value": 10
+                            },
+                            {
+                                "name": "ventes",
+                                "value": 80
+                            },
+                            {
+                                "name": "RH",
+                                "value": 40
+                            },
+                        ]
+                    }
+                ]
+            }
+        ]

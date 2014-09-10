@@ -1,0 +1,61 @@
+<form class="form-horizontal" name="charactercreation" ng-submit="createCharacter(charactercreation.$valid && character.avatar)" novalidate>
+	<fieldset>
+
+	<!-- Form Name -->
+	<legend></legend>
+
+	<!-- Multiple Radios (inline) -->
+	<div class="form-group">
+		
+	  <label class="col-md-4 control-label" for="radios">{{'YOU_ARE' | translate}}</label>
+	  <div class="controls col-md-6">
+	    <label class="radio inline col-md-6" for="radios-0">
+	      <input type="radio" name="radios" id="radios-0" value="man" checked="checked" ng-model="character.sex">
+	      {{'A_MAN' | translate}}
+	    </label>
+	    <label class="radio inline col-md-6" for="radios-1">
+	      <input type="radio" name="radios" id="radios-1" value="woman" ng-model="character.sex">
+	      {{'A_WOMAN' | translate}}
+	    </label>
+	  </div>
+	</div>
+	<p class="help-block" ng-if="character.sex">{{'CHOOSE_AVATAR' | translate}}</p>
+	<div ng-if="character.sex == 'man'">
+		<ul class="row">
+			<li class="avatar col-xs-1 col-sm-1 col-md-1 col-lg-1" ng-repeat="avatar in avatar.man" ng-class="{selected: character.avatar == avatar.id}">
+				<img ng-src="images/avatar/{{avatar.file}}" alt="{{avatar.file}}" ng-click="selectAvatar(avatar.id)">
+			</li>
+		</ul>
+	</div>
+	<div ng-if="character.sex == 'woman'">
+		<ul class="row">
+			<li class="avatar col-xs-1 col-sm-1 col-md-1 col-lg-1" ng-repeat="avatar in avatar.woman" ng-class="{selected: character.avatar == avatar.id}">
+				<img ng-src="images/avatar/{{avatar.file}}" alt="{{avatar.file}}" ng-click="selectAvatar(avatar.id)">
+			</li>
+		</ul>
+	</div>
+	<!-- Text input-->
+	<div class="form-group" ng-class="{'has-error': charactercreation.nickname.$invalid && !charactercreation.nickname.$pristine}">
+	  <label class="control-label col-md-4" for="nickname">{{'CHARACTER_NAME' | translate}}</label>
+	  <div class="col-md-6">
+	    <input id="nickname" name="nickname" type="text" placeholder="" class="form-control input-md" ng-required="true"  ng-model="character.name" ng-minlength="3" ng-maxlength="255">
+	    <p class="help-block">{{'CHARACTER_NAME_HELP' | translate}}</p>
+	    <p class="help-block error-block" ng-if="charactercreation.nickname.$invalid && !charactercreation.nickname.$pristine">{{'CHARACTER_NAME_BAD' | translate}}</p>
+	    <p class="help-block error-block" ng-if="charactercreation.nickname.$error.minlength && !charactercreation.nickname.$pristine">{{'TOO_SHORT' | translate:'{min:3}'}}</p>
+	    <p class="help-block error-block" ng-if="charactercreation.nickname.$error.maxlength">{{'TOO_LONG' | translate:'{max:255}'}}</p>
+	  </div>
+	</div>
+
+
+	
+
+	<!-- Button -->
+	<div class="form-group">
+	  <label class="control-label col-md-4" for="singlebutton"></label>
+	  <div class="col-md-6">
+	    <button id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit" ng-disabled="charactercreation.$invalid || !character.avatar">{{'CREATE_CHARACTER' | translate}}</button>
+	  </div>
+	</div>
+
+	</fieldset>
+</form>

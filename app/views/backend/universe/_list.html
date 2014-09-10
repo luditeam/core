@@ -1,0 +1,35 @@
+<div class="widget">
+	<div class="navbar widget-teal">
+		<ul class="nav navbar-nav">
+			<li class="widget-icon"><i class="fa fa-globe fa-2x"></i></li>
+			<li class="widget-title">Universes</li>
+		</ul>
+		<ul class="navbar-right">
+			<li class="search-field" ng-show="searchActivated"><input type="text" ng-model="search"></li>
+			<li class="fa fa-search fa-lg widget-menu" ng-class="{'activated': searchActivated}" ng-click="toggleSearch()"></li>
+	      	<li class="fa fa-cog fa-lg widget-menu"></li>
+	      	<li class="fa fa-plus fa-lg widget-menu" ng-click="new()"></li>
+	    </ul>
+	</div>
+	<div role="content">
+		<div class="widget-body">
+			<table class="table">
+				<tr>
+					<th>Name</th>
+
+					<th class="toolbar-button text-center">View</th>
+					<th class="toolbar-button text-center">Edit</th>
+				</tr>
+				<tr ng-repeat="universe in universes.universes | filter:search">
+					<td class="">{{universe.name}}</td>
+					<td class="text-center"><span class="fa fa-eye" ng-click="view(universe.id)"></span></td>
+					<td class="text-center"><span class="fa fa-pencil" ng-click="edit(universe.id)"></span></td>
+				</tr>
+				<tr ng-if="!universes.universes.length">
+					<td colspan="3">NO_UNIVERSE_TROUBLE</td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+</div>

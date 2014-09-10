@@ -1,0 +1,21 @@
+<form class="form-horizontal"  name="model" ng-submit="create(model.$valid)" novalidate>
+	<!-- Text input-->
+	<div class="form-group" ng-class="{'has-error': model.name.$invalid && !model.name.$pristine}">
+	  <label class="col-md-4 control-label" for="name">{{'name' | translate}}</label>  
+	  <div class="col-md-8">
+	  <input id="name" name="name" type="text" placeholder="" class="form-control input-md" ng-required="true" ng-minlength="3" ng-maxlength="255" ng-model="model.name">
+	  <span class="help-block"></span>
+	  	<p class="help-block error-block" ng-if="model.name.$invalid && !model.name.$pristine">{{'name_BAD' | translate}}</p>
+	    <p class="help-block error-block" ng-if="model.name.$error.minlength && !model.name.$pristine">{{'TOO_SHORT' | translate:'{min:3}'}}</p>
+	    <p class="help-block error-block" ng-if="model.name.$error.maxlength">{{'TOO_LONG' | translate:'{max:255}'}}</p>
+	  </div>
+	</div>
+
+	<!-- Button -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for=""></label>
+	  <div class="col-md-4">
+	    <button type="submit" id="" name="" class="btn btn-primary">{{'CREATE' | translate}}</button>
+	  </div>
+	</div>
+</form>

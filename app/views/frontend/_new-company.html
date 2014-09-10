@@ -1,0 +1,65 @@
+<form name="companycreation" class="form-horizontal" ng-submit="createCompany(companycreation.$valid)" novalidate>
+  <fieldset>
+
+  <!-- Form Name -->
+  <legend></legend>
+
+  <!-- Text input-->
+  <div class="form-group"  ng-class="{'has-error': companycreation.company_name.$invalid && !companycreation.company_name.$pristine}">
+    <label class="col-md-4 control-label" for="company_name">{{'COMPANY_NAME' | translate}}</label>  
+    <div class="col-md-6">
+    <input id="company_name" name="company_name" type="text"  class="form-control input-md" ng-required="true" ng-model="company.name" ng-minlength="3" ng-maxlength="255">
+    <span class="help-block">{{'CHOOSE_COMPANY_NAME' | translate}}</span>
+    <p class="help-block error-block" ng-if="companycreation.company_name.$invalid && !companycreation.company_name.$pristine">{{'COMPANY_NAME_BAD' | translate}}</p>
+    <p class="help-block error-block" ng-if="companycreation.company_name.$error.minlength && !companycreation.company_name.$pristine">{{'TOO_SHORT' | translate:'{min:3}'}}</p>
+    <p class="help-block error-block" ng-if="companycreation.company_name.$error.maxlength">{{'TOO_LONG' | translate:'{max:255}'}}</p>
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group" ng-class="{'has-error': companycreation.capital.$invalid}">
+    <label class="col-md-4 control-label" for="capital">{{'INITIAL_CAPITAL' | translate}}</label>  
+    <div class="col-md-6">
+    <input id="capital" name="capital" type="number" min="1" ng-min="1" ng-max="getMoney()" value="1" class="form-control input-md" ng-required="true" ng-model="company.capital">
+    <span class="help-block">{{'ALLOCATE_CAPITAL' | translate}}</span>
+    <p class="help-block error-block" ng-if="companycreation.capital.$invalid && !companycreation.capital.$pristine">{{'BAD_NUMBER' | translate}}</p>
+    <p class="help-block error-block" ng-if="companycreation.capital.$error.ngMin && !companycreation.capital.$pristine">{{'MIN_1' | translate}}</p>
+    <p class="help-block error-block" ng-if="companycreation.capital.$error.ngMax && !companycreation.capital.$pristine">{{'OVER_CAPITAL' | translate: '{capital:getMoney()}'}}</p>
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group" ng-class="{'has-error': companycreation.shares.$invalid}">
+    <label class="col-md-4 control-label" for="shares">{{'SHARES' | translate}}</label>  
+    <div class="col-md-6">
+    <input id="shares" name="shares" type="number" min="1" value="1" ng-min="1" ng-max="getMaxShare()" class="form-control input-md" ng-required="true" ng-model="company.shares">
+    <span class="help-block">{{'HOW_MANY_SHARES' | translate}}</span>
+    <p class="help-block error-block" ng-if="companycreation.shares.$invalid && !companycreation.shares.$pristine">{{'BAD_NUMBER' | translate}}</p>
+    <p class="help-block error-block" ng-if="companycreation.shares.$error.ngMin && !companycreation.shares.$pristine">{{'MIN_1' | translate}}</p>
+    <p class="help-block error-block" ng-if="companycreation.shares.$error.ngMax && !companycreation.shares.$pristine">{{'OVER_UNDREAD_CAPITAL' | translate: '{shares: getMaxShare()}'}}</p>
+    </div>
+  </div>
+
+  <!-- Select Basic -->
+  <div class="form-group" ng-class="{'has-error': companycreation.activity.$invalid && !companycreation.activity.$pristine}">
+    <label class="col-md-4 control-label" for="activity">{{'ACTIVITY' | translate}}</label>
+    <div class="col-md-6">
+      <select id="activity" name="activity" class="form-control" ng-model="company.activity" ng-required="true">
+        <option value="" selected="selected">{{'SELECT_YOUR_ACTIVITY' | translate}}</option>
+        <option ng-repeat="activity in activities" value="{{activity}}">{{activity | translate}}</option>
+      </select>
+      <p class="help-block error-block" ng-if="companycreation.activity.$invalid && !companycreation.activity.$pristine">{{'CHOOSE_ACTIVITY' | translate}}</p>
+    </div>
+  </div>
+
+
+  <!-- Button -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for=""></label>
+    <div class="col-md-4">
+      <button id="" name="" class="btn btn-primary" type="submit" ng-disabled="companycreation.$invalid">{{'CREATE_COMPANY' | translate}}</button>
+    </div>
+  </div>
+
+  </fieldset>
+</form>

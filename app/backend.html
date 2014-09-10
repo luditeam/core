@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="styles/c3.css">
         <link rel="stylesheet" href="styles/common.css">
 
-        <link rel="stylesheet" href="styles/frontend.css">
+        <link rel="stylesheet" href="styles/backend.css">
         <!-- endbuild -->
 </head>
   <body ng-controller="RootCtrl">
@@ -32,7 +32,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div id="wrapper" ng-controller="FrontendCtrl" ng-class="{'no-sidebar': !hasCompany()}">
+    <div id="wrapper" ng-controller="BackendCtrl">
 
       <!-- Sidebar -->
       <nav class="navbar navbar-default navbar-fixed-top top-bar" role="navigation">
@@ -44,23 +44,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span> 
           </button>
-          <a class="navbar-brand" href="#welcome">{{truncate(getCompanyName(), 15)}}</a>
+          <a class="navbar-brand" href="#welcome">{{'ADMIN_INTERFACE' | translate}}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav side-nav" ng-if="hasCompany()">
-            <li class="side-user hidden-xs col-md-12 col-lg-12">
-                <img class="img-circle center" ng-src="{{getAvatarUrl()}}" alt="" width="128" height="128">
-                
-                <div class="clearfix"></div>
-            </li>
+          <ul class="nav navbar-nav side-nav">
+            
             <li ng-class="{'active': page == 'welcome'}"><a href="#welcome"><i class="fa fa-dashboard"></i> {{'WELCOME' | translate}}</a></li>
-            <li ng-class="{'active': page == 'user-scheduling'}"><a href="#user-scheduling"><i class="fa fa-calendar"></i> {{'SCHEDULING' | translate}}</a></li>
-            <li ng-class="{'active': page == 'building'}"><a href="#building"><i class="fa fa-building-o"></i>  {{'BUILDING' | translate}}</a></li>
-            <li ng-class="{'active': page == 'shopping'}"><a href="#shopping"><i class="fa fa-cubes"></i> {{'SHOPPING' | translate}}</a></li>
-            <li ng-class="{'active': page == 'tasks-handling'}"><a href="#tasks-handling"><i class="fa fa-tasks"></i> {{'TASKS' | translate}}</a></li>
-            <li ng-class="{'active': page == 'marketing'}"><a href="#marketing"><i class="fa fa-bullhorn"></i> {{'MAKETING' | translate}}</a></li>
+            <li ng-class="{'active': page == 'universe/list'}"><a ng-href="#universe/list"><i class="fa fa-globe"></i> {{'UNIVERS_HANDLING' | translate}}</a></li>
             <!--<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Dropdown <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -73,10 +65,8 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right navbar-user" ng-controller="TopMenuCtrl">
-             <li class="end-turn-button" ng-if="hasCompany()">
-                <div class="btn btn-primary" ng-click="endTurn()">{{'END_TURN' | translate}}</div>
-            </li>
-            <li class="dropdown messages-dropdown" ng-if="hasCompany()">
+             
+            <li class="dropdown messages-dropdown">
               <a href="#{{page}}" class="dropdown-toggle" data-toggle="dropdown" ng-class="{'activated': getUnreadTasks() > 0}"><i class="fa fa-envelope"></i> {{'TASKS_TOP_MENU' | translate}} <span class="badge">{{getUnreadTasks()}}</span> <b class="caret"></b></a>
               <ul class="dropdown-menu dropdown-tasks">
                         <!--<li>
@@ -186,7 +176,7 @@
                 <li><a href="#{{page}}">{{'VIEW_INBOX' | translate}} <span class="badge">{{getUnreadMessages()}}</span></a></li>
               </ul>
             </li>
-            <li class="dropdown alerts-dropdown" ng-if="hasCompany()">
+            <li class="dropdown alerts-dropdown">
               <a href="#{{page}}" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i>  <span class="badge">{{getUnreadAlerts()}}</span> <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <!--<li><a href="#{{page}}">Default <span class="label label-default">Default</span></a></li>
@@ -246,19 +236,17 @@
     <script src="scripts/libs/d3.min.js"></script>
     <script src="scripts/libs/c3.min.js"></script>
     <script src="scripts/app.js"></script>
-    <script src="scripts/consts/frontend/env.value.js"></script>
+    <script src="scripts/consts/backend/env.value.js"></script>
     <script src="scripts/consts/common/enum.value.js"></script>
-    <script src="scripts/consts/frontend/dictionnary.config.js"></script>
+    <script src="scripts/consts/backend/dictionnary.config.js"></script>
     <script src="scripts/controllers/common/root.controller.js"></script>
     <script src="scripts/controllers/common/screen.controller.js"></script>
-    <script src="scripts/controllers/frontend/frontend.controller.js"></script>
-    <script src="scripts/controllers/frontend/top.menu.controller.js"></script>
-    <script src="scripts/controllers/frontend/screens/welcome.controller.js"></script>
-    <script src="scripts/controllers/frontend/screens/login.controller.js"></script>
-    <script src="scripts/controllers/frontend/screens/user.scheduling.controller.js"></script>
-    <script src="scripts/controllers/frontend/screens/register.controller.js"></script>
-    <script src="scripts/controllers/frontend/screens/tasks.controller.js"></script>
-    <script src="scripts/controllers/frontend/screens/marketing.controller.js"></script>
+    <script src="scripts/controllers/backend/backend.controller.js"></script>
+    <script src="scripts/controllers/backend/top.menu.controller.js"></script>
+    <script src="scripts/controllers/backend/screens/welcome.controller.js"></script>
+    <script src="scripts/controllers/backend/screens/login.controller.js"></script>
+    <script src="scripts/controllers/backend/screens/universes.controller.js"></script>
+    <script src="scripts/controllers/backend/top.menu.controller.js"></script>
     <script src="scripts/directives/arrow-range.js"></script>
     <script src="scripts/directives/minmax.js"></script>
     <script src="scripts/filters/hour.filter.js"></script>
@@ -266,8 +254,8 @@
     <script src="scripts/filters/number.filter.js"></script>
     <script src="scripts/services/common/logging.service.js"></script>
     <script src="scripts/services/common/common.services.service.js"></script>
-    <script src="scripts/services/frontend/web.services.service.js"></script>
-    <script src="scripts/consts/frontend/route.config.js"></script>
+    <script src="scripts/services/backend/web.services.service.js"></script>
+    <script src="scripts/consts/backend/route.config.js"></script>
     <script src="scripts/consts/common/route.config.js"></script>
 
 </body>
