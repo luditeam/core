@@ -1,4 +1,4 @@
-<form class="form-horizontal"  name="model" ng-submit="create(model.$valid)" novalidate>
+<form class="form-horizontal"  name="model" ng-submit="process(params.method, model.$valid)" novalidate>
 	<!-- Text input-->
 	<div class="form-group" ng-class="{'has-error': model.name.$invalid && !model.name.$pristine}">
 	  <label class="col-md-4 control-label" for="name">{{'name' | translate}}</label>  

@@ -38,9 +38,8 @@ app.config(['$routeProvider', '$locationProvider',
       // configure html5 to get links working on jsfiddle
       //$locationProvider.html5Mode(true);
   }])
-app.run( function($rootScope, $location) {
+app.run( function($rootScope, $location, env) {
     $rootScope.unSecuredRoute = ["/cgu", "/cnil", "/retrieve-password"];
-   
     // register listener to watch route changes
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
       if ($rootScope.session.user === null) {
@@ -58,15 +57,25 @@ app.run( function($rootScope, $location) {
               $location.path( "/login" );
           }
             
-        };
+        }
       }
       else
       {
         if (next.$$route && next.$$route.templateUrl == "views/_login.html" ) {
           $location.path( "/welcome" );
         }
-        else
-          $rootScope.page = $location.path().substring(1); 
+        else{
+            $rootScope.page = $location.path().substring(1);
+            if(next.params.ctrl){
+                var ctrl = next.params.ctrl;
+                var method = next.params.method;
+                var id = next.params.id;
+                next.$$route.templateUrl = "views/" + env.ident + "/" + ctrl+ "/_" + method + ".html";
+                next.$$route.controller = ctrl.substr(0, 1).toUpperCase() + ctrl.substr(1) + "Ctrl";
+            }
+              
+        }
+          
       }
 
 

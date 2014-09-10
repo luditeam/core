@@ -1,5 +1,5 @@
 app.value("env",{
-	ident: "back",
+	ident: "backend",
 	session: {
 		user: null
 	}

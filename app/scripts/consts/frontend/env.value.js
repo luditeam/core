@@ -1,5 +1,5 @@
 app.value("env",{
-	ident: "front",
+	ident: "frontend",
 	session: {
 		user: null,
 		universes: null,

@@ -19,10 +19,10 @@ app.service("webServices",['commonServices', function(commonServices){
 		},
 		/*getUniverses: function(user_id, onSuccess, onError){
 			this.cs._get("universe/userid/"+user_id, this.cs.Methods.GET, null, onSuccess, onError);
-		},
+		},*/
 		createUniverse: function(user_id, name, onSuccess, onError){
 			var params = {userid : user_id, name: name};
 			this.cs._get("universe/", this.cs.Methods.POST, params, onSuccess, onError);
-		}*/
+		}
 	}
 }]);

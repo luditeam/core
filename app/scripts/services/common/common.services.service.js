@@ -35,6 +35,16 @@ app.service("commonServices",['$resource', function($resource){
             var _that = this.cs;
             return $resource(_that._url + uri, {},
                 { 
+                    'save': {headers : {'Content-Type': 'application/x-www-form-urlencoded'}, method: 'POST', transformRequest: function(data, headersGetter)
+                        {
+                            var end = {};
+                            $.each(data, function(key, value){
+                                if (key.indexOf("$") == -1)
+                                    end[key] = value;
+                            });
+                            return $.param(end);
+                        }
+                    },
                     'update': {method: 'PUT'},
                     'query':  {method:'GET', isArray: isListIsArray === false? false : true},
                 }
