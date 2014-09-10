@@ -20,12 +20,12 @@
 					<th class="toolbar-button text-center">View</th>
 					<th class="toolbar-button text-center">Edit</th>
 				</tr>
-				<tr ng-repeat="universe in universes.universes | filter:search">
-					<td class="">{{universe.name}}</td>
-					<td class="text-center"><span class="fa fa-eye" ng-click="view(universe.id)"></span></td>
-					<td class="text-center"><span class="fa fa-pencil" ng-click="edit(universe.id)"></span></td>
+				<tr ng-repeat="item in items.universes | filter:search">
+					<td class="">{{item.name}}</td>
+					<td class="text-center"><span class="fa fa-eye" ng-click="view(item.id)"></span></td>
+					<td class="text-center"><span class="fa fa-pencil" ng-click="edit(item.id)"></span></td>
 				</tr>
-				<tr ng-if="!universes.universes.length">
+				<tr ng-if="!items.universes.length">
 					<td colspan="3">NO_UNIVERSE_TROUBLE</td>
 				</tr>
 			</table>
