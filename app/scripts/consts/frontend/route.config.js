@@ -1,4 +1,4 @@
-app.config(['$routeProvider', '$locationProvider',
+/*app.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
         
         $routeProvider
@@ -61,4 +61,4 @@ app.config(['$routeProvider', '$locationProvider',
 
       // configure html5 to get links working on jsfiddle
       //$locationProvider.html5Mode(true);
-  }])
+  }])*/

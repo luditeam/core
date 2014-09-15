@@ -1,5 +1,5 @@
 app.controller("LoginCtrl", ['$scope', '$rootScope', 'webServices', '$location', 'localStorageService', 'consts',function($scope, $rootScope, webServices, $location, localStorageService, consts){
-		if (($rootScope.page == "new-character" && $scope.hasCharacter()) || ($rootScope.page == "new-company"  && $scope.hasCompany())){
+		if (($rootScope.page == "character-new" && $scope.hasCharacter()) || ($rootScope.page == "company-new"  && $scope.hasCompany())){
 			$location.path( "/welcome" );
 			$scope.$apply();
 		}
@@ -44,7 +44,7 @@ app.controller("LoginCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 					startGame(data);
 				}
 				else{
-					$location.path( "/new-company" );
+					$location.path( "/company/new" );
 					$scope.setLoading(false);
 					$scope.$apply();
 				}
@@ -76,7 +76,7 @@ app.controller("LoginCtrl", ['$scope', '$rootScope', 'webServices', '$location',
 					onCharacterLoadedOrCreated && onCharacterLoadedOrCreated(character);
 				}
 				else {
-					$location.path( "/new-character" );
+					$location.path( "/character/new" );
 					$scope.setLoading(false);
 					$scope.$apply();
 				}

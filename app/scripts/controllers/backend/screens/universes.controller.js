@@ -1,12 +1,34 @@
-app.controller("UniverseCtrl", ['$scope', '$rootScope', '$location', '$routeParams', 'crudService', function($scope, $rootScope, $location, $routeParams, crudService){
+app.controller("UniverseCtrl", ['$scope', 'crudService', function($scope, crudService){
 
     //config
-    var ctrl = "universe";
+    $scope.model = [
+                {
+                    name: "userid",
+                    value: $scope.getUserId(),
+                    type: "hidden",
+                    constraints: {
+                        editable: false
+                    }
+                 },
+                {
+                    name: "name",
+                    type: "text",
+                    constraints: {
+                        min: 3,
+                        max: 255,
+                        required: true
+                    },
+                    label: "NAME",
+
+                 },
+    ];
     var queryParam = {param: "userid", id: $scope.getUserId()};
-    var populate = function(Model){
-        Model.userid = $scope.getUserId();
-        Model.name = $scope.model.name;
+    var callbacks = {
+        query: function(){},
+        get: function(){},
+        save: function(){},
+        update: function(){},
     };
     //config
-    $scope = crudService.set($scope, ctrl, queryParam, populate);
+    $scope = crudService.set($scope, queryParam, callbacks);
 }]);

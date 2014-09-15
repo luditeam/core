@@ -13,12 +13,12 @@
 				    <label class="checkbox">
 				    	<input ng-model="user.password" type="password" class="form-control" placeholder="Password" required="">
 				    </label>
-				    <a href="#retrieve-password">{{'FORGOT_PASS' | translate}}</a>
+				    <a href="#account/password">{{'FORGOT_PASS' | translate}}</a>
 				    <label class="checkbox">
 				      <input  ng-model="user.rememberMe"  type="checkbox" value="remember-me"> {{'REMEMBER_ME' | translate}}
 				    </label>
-				    <div><a href="#cnil">{{'CNIL_STATEMENT' | translate}}</a></div>
-				    <div><a href="#cgu">{{'CGU' | translate}}</a></div>
+				    <div><a href="#docs/cnil">{{'CNIL_STATEMENT' | translate}}</a></div>
+				    <div><a href="#docs/cgu">{{'CGU' | translate}}</a></div>
 				    
 				    <div class="text-right">
 				    	<button class="btn btn-default" type="submit" ng-click="login()">{{'SIGN_IN' | translate}}</button>

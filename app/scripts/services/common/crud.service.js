@@ -1,6 +1,13 @@
 app.service("crudService",['$location', '$routeParams', 'webServices', function($location, $routeParams, webServices){
     return {
-        set: function($scope, ctrl, queryParam, populateFunc, messages){
+        set: function($scope, queryParam, callbacks){
+            $scope.params = $routeParams;
+            var ctrl = $scope.params.ctrl;
+            var populate = function(Model){
+                $.each($scope.model, function(key, value){
+                    Model[key] = $scope.values[key];
+                });
+            }
             var CRUD = webServices.crud(ctrl + "/:param/:id", false);
             $scope.toggleSearch = function(){
                 $scope.searchActivated = !$scope.searchActivated;
@@ -8,7 +15,7 @@ app.service("crudService",['$location', '$routeParams', 'webServices', function(
 
             var Model = new CRUD();
             $scope.setLoading(true);
-            $scope.params = $routeParams;
+           
             
             if ($scope.params.method == "list"){
                     $scope.items = CRUD.query(queryParam, function(response){
@@ -33,7 +40,7 @@ app.service("crudService",['$location', '$routeParams', 'webServices', function(
             };
             $scope.process = function(method, isValid){
                 if (isValid){
-                    populateFunc && populateFunc(Model, method, isValid);
+                    populate && populate(Model);
                     if (method == "edit"){
                         Model.$update(function(){
                             //notif messages.success.update

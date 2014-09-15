@@ -1,13 +1,13 @@
 <form class="form-horizontal"  name="model" ng-submit="process(params.method, model.$valid)" novalidate>
 	<!-- Text input-->
-	<div class="form-group" ng-class="{'has-error': model.name.$invalid && !model.name.$pristine}">
-	  <label class="col-md-4 control-label" for="name">{{'name' | translate}}</label>  
+	<div class="form-group" ng-class="{'has-error': values[item.name].$invalid && !values[item.name].$pristine}" ng-repeat="item in model">
+	  <label class="col-md-4 control-label" for="name">{{'NAME' | translate}}</label>  
 	  <div class="col-md-8">
-	  <input id="name" name="name" type="text" placeholder="" class="form-control input-md" ng-required="true" ng-minlength="3" ng-maxlength="255" ng-model="model.name">
+	  <input id="name" name="name" type="{{value.type}}" placeholder="" class="form-control input-md" ng-required="value.constraints.required" ng-minlength="value.constraints.min" ng-maxlength="value.constraints.max" ng-model="values[item.name]">
 	  <span class="help-block"></span>
-	  	<p class="help-block error-block" ng-if="model.name.$invalid && !model.name.$pristine">{{'name_BAD' | translate}}</p>
-	    <p class="help-block error-block" ng-if="model.name.$error.minlength && !model.name.$pristine">{{'TOO_SHORT' | translate:'{min:3}'}}</p>
-	    <p class="help-block error-block" ng-if="model.name.$error.maxlength">{{'TOO_LONG' | translate:'{max:255}'}}</p>
+	  	<p class="help-block error-block" ng-if="values[item.name].$invalid && !values[item.name].$pristine">{{'NAME_BAD' | translate}}</p>
+	    <p class="help-block error-block" ng-if="values[item.name].$error.minlength && !values[item.name].$pristine">{{'TOO_SHORT' | translate:'{min:3}'}}</p>
+	    <p class="help-block error-block" ng-if="values[item.name].$error.maxlength">{{'TOO_LONG' | translate:'{max:255}'}}</p>
 	  </div>
 	</div>
 
@@ -15,7 +15,9 @@
 	<div class="form-group">
 	  <label class="col-md-4 control-label" for=""></label>
 	  <div class="col-md-4">
-	    <button type="submit" id="" name="" class="btn btn-primary">{{'CREATE' | translate}}</button>
+	    <button type="submit" id="" name="" class="btn btn-primary" ng-if="params.method == 'new'">{{'CREATE' | translate}}</button>
+	    <button type="submit" id="" name="" class="btn btn-primary" ng-if="params.method == 'edit'">{{'EDIT' | translate}}</button>
+	    <button type="button" id="" name="" class="btn btn-cancel" ng-if="params.method == 'edit'">{{'CANCEL' | translate}}</button>
 	  </div>
 	</div>
 </form>
